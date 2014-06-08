@@ -28,7 +28,7 @@
 	</script>
 
 	<?php
-		$dir    = '../data_approved_images';
+		$dir    = '../data_finished_images';
 		$files1 = scandir($dir, 1);
 
 		// for each image file in the approved directory
@@ -73,7 +73,7 @@
     			position: new google.maps.LatLng(imgThumbStack[i].split("_")[2], imgThumbStack[i].split("_")[3]),
     			map: map,
     			labelContent: "0", 
-    			icon: "../data_approved_images/" + imgThumbStack[i],
+    			icon: "../data_finished_images/" + imgThumbStack[i],
     			labelAnchor: new google.maps.Point(0, 50),
     			size: new google.maps.Size(50, 50),
     			labelClass: "labels", 
