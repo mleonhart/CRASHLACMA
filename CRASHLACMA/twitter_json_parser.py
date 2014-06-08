@@ -6,7 +6,7 @@ import re
 import urllib
 import time
 from geopy import geocoders
-import Image
+from PIL import Image
 import os
 
 # TODO: handle test cases
@@ -74,9 +74,15 @@ class TwitterJsonParser():
 
  	 		try:
  	 			im = Image.open(DIR_FINISHED_IMGS + '/' + IMG_NAME)
- 	 			# TODO: need to figure out what thumbnail size looks best on projector
-  				im2 = im.resize((40, 40), Image.NEAREST) 
+ 	 			print 'opened image'
+
+				# TODO: need to figure out what thumbnail size looks best on projector
+  				im2 = im.resize((40, 40), Image.NEAREST)
+				print 'resized image'
+ 
   				im2.save(DIR_FINISHED_IMGS + '/thumb_' + IMG_NAME) 
+				print 'saved image'
+
   			except IOError, e:
 				print 'could not open resize and save %s' % IMG_NAME
 				
