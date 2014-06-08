@@ -2,6 +2,7 @@
 <html>
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="Refresh" content="5">
 
     <style type="text/css">
       html { height: 100% }
