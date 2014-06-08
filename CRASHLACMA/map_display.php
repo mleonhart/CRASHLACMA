@@ -29,7 +29,7 @@
 
 	<?php
 		$dir    = '../data_approved_images';
-		$files1 = scandir($dir, SCANDIR_SORT_DESCENDING);
+		$files1 = scandir($dir, 1);
 
 		// for each image file in the approved directory
 		$count = 0;
