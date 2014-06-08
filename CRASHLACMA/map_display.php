@@ -70,7 +70,7 @@
 			console.log("stack[" + i + "]: " + imgThumbStack[i]);
 
     		var marker = new google.maps.Marker({
-    			position: new google.maps.LatLng(imgThumbStack[i].split("_")[1], imgThumbStack[i].split("_")[2]),
+    			position: new google.maps.LatLng(imgThumbStack[i].split("_")[2], imgThumbStack[i].split("_")[3]),
     			map: map,
     			labelContent: "0", 
     			icon: "../data_approved_images/" + imgThumbStack[i],

@@ -6,8 +6,12 @@ import re
 import urllib
 import time
 from geopy import geocoders
-from PIL import Image
+# on the pi use this
+#from PIL import Image
+# not on the pi use this
+import Image
 import os
+import time
 
 # TODO: handle test cases
 # testcases:
@@ -61,8 +65,9 @@ class TwitterJsonParser():
 						
 	# this is run on one tweet at a time
 	def save_img_from_tweet(self, lat, lng, img_url):
+		ts = str(time.time())
 		DIR_FINISHED_IMGS = '../data_finished_images'
-		IMG_NAME = lat + '_' + lng + '_.PNG'	
+		IMG_NAME = ts + '_' + lat + '_' + lng + '_.PNG'	
 		
  		if (False == os.path.isfile(DIR_FINISHED_IMGS + '/' + IMG_NAME)): 			
 			# save url to disk with address as filename
