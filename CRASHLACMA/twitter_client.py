@@ -5,14 +5,20 @@ import shutil
 
 from twitter_json_parser import TwitterJsonParser 
 
-print("Running twitter client...")
+read_dir = '../data_raw_tweets/'
+write_dir = '../data_processed_tweets/'
 
-for root, _, files in os.walk('../data_raw_tweets/'):
+print("Searching in %s for json tweet files") % read_dir
+
+for root, _, files in os.walk(read_dir):
     for f in files:
-        fullpath = os.path.join(root, f)
-        print fullpath
+        full_path = os.path.join(root, f)
+        print '<3 ~ <3 ~ <3 ~ <3 ~ <3 ~ <3 ~ <3 ~ <3 ~ <3 ~ <3 ~ <3'
+        print 'Parsing %s ' % full_path
         parser = TwitterJsonParser()
-        print(parser.get_data_from_tweets(fullpath))
-        shutil.move(fullpath, '../data_processed_tweets/')
+        print(parser.get_data_from_tweets(full_path))
+        print 'Done parsing %s. Moving json file of tweets to %s' % (full_path, write_dir)
+        shutil.move(full_path, write_dir)
+        
 
 		
