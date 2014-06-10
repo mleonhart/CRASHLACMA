@@ -18,12 +18,12 @@ def main():
     listen = SListener(api, DIR_RAW_TWEET_DATA + '/' + output_file_prefix)
     stream = tweepy.Stream(auth, listen)
 
-    print "Streaming started..."
+    print "Listening for tweets containing %s " % track
 
     try: 
         stream.filter(track = track)
     except:
-        print "error!"
+        print "Stream error. Disconnecting."
         stream.disconnect()
 
 if __name__ == '__main__':
