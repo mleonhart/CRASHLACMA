@@ -6,24 +6,16 @@ import re
 import urllib
 import time
 from geopy import geocoders
-# on the pi use this
-#from PIL import Image
-# not on the pi use this
-import Image
 import os
 import time
-
-# TODO: handle test cases
-# testcases:
-# hollywood & vine, hollywood and vine
-# order of operations: hashtag, img, address, other text.
-# hashtag allcaps or lowercase
-# uploaded image, link to hosted image
-# multiple urls? currently hard-coded to only accept the first url seen. probably best this way.
+# on the pi use this:
+###from PIL import Image
+# not on the pi use this:
+import Image
 
 class TwitterJsonParser():
 	
-	# parser useful fields from file of json tweet objects
+	# parses hastag, geolocation & img url fields from file of json tweet objects
 	def get_data_from_tweets(self, input_data):
 		
 		g = geocoders.GoogleV3()
@@ -42,10 +34,9 @@ class TwitterJsonParser():
 					
 					# geocode address to lat/long
 					address, (lat, lng) = g.geocode(tweet_text)
-					# TODO: this is a good place to validate the address for an LA coordinate.
-					# if not LA, toss in a bucket to be human-examined
+					# ISSUE 4: this is a good place to validate the address for an LA coordinate.
 					
-					# img uploaded via twitter
+					# if img uploaded via twitter
 					if tweet_data["entities"].get('media'): 
 						print "DEBUG: img uploaded"
 						img_url = tweet_data["entities"]["media"][0]["media_url"]	
@@ -69,9 +60,10 @@ class TwitterJsonParser():
 		DIR_FINISHED_IMGS = '../data_finished_images'
 		IMG_NAME = ts + '_' + lat + '_' + lng + '_.PNG'	
 		
- 		if (False == os.path.isfile(DIR_FINISHED_IMGS + '/' + IMG_NAME)): 			
-			# save url to disk with address as filename
+ 		if (False == os.path.isfile(DIR_FINISHED_IMGS + '/' + IMG_NAME)): 	
+
 			try:
+				# save url to disk with address as filename
 				file = urllib.urlretrieve(img_url, DIR_FINISHED_IMGS + '/' + IMG_NAME)
 				print("Saved: %s" % DIR_FINISHED_IMGS + '/' + IMG_NAME)
 			except IOError, e:
@@ -79,14 +71,9 @@ class TwitterJsonParser():
 
  	 		try:
  	 			im = Image.open(DIR_FINISHED_IMGS + '/' + IMG_NAME)
- 	 			print 'opened image'
-
-				# TODO: need to figure out what thumbnail size looks best on projector
-  				im2 = im.resize((40, 40), Image.NEAREST)
-				print 'resized image'
- 
+				# ISSUE 6: need to figure out what thumbnail size looks best on projector
+  				im2 = im.resize((40, 40), Image.NEAREST) 
   				im2.save(DIR_FINISHED_IMGS + '/thumb_' + IMG_NAME) 
-				print 'saved image'
 
   			except IOError, e:
 				print 'could not open resize and save %s' % IMG_NAME
@@ -96,8 +83,10 @@ class TwitterJsonParser():
 			print("--------------------------------------------------------") # DEBUG
 
 		else:
- 			print("file already exists. Skipping %s") % DIR_FINISHED_IMGS + '/' + IMG_NAME
+ 			print("File already exists. Skipping %s ") % DIR_FINISHED_IMGS + '/' + IMG_NAME
  			return
  		
 		return 
+
+		
 	
