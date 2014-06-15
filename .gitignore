@@ -8,3 +8,10 @@
 # ignore compiled python stuff
 *.pyc
 
+# ignore the data directories
+data_raw_tweets/
+data_processed_tweets/
+data_finished_images/
+data_approved_images/
+
+
