@@ -6,6 +6,8 @@ from unittest.mock import patch
 from tweet_handler.management.commands import gettwitterfeed
 
 #http://chimera.labs.oreilly.com/books/1230000000393/ch14.html#_solution_226
+#other options
+#http://www.obeythetestinggoat.com/how-to-log-exceptions-to-stderr-in-django.html
 
 class TestMessagePrint(TestCase):
     def test_message_gets_to_stdout(self):
