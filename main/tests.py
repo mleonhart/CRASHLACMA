@@ -16,5 +16,11 @@ class HomePageTest(TestCase):
     def test_home_page_returns_correct_html(self):
         request = HttpRequest()
         response = home_page(request)
-        expected_html = render_to_string('home.html')
+        expected_html = render_to_string('main/home.html')
         self.assertEqual(response.content.decode(), expected_html)
+    
+class AboutPageTest(TestCase):
+
+	def test_uses_about_template(self):
+		response = self.client.get('/about/')
+		self.assertTemplateUsed(response, 'main/about.html')

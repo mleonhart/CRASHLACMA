@@ -21,15 +21,18 @@ class NewOutsideVisitorTest(unittest.TestCase):
 		
 		# She notices sees and About link  
 		#in the main navigation area (check for style? location?)
-		nav_text = self.browser.find_element_by_id('id_new_item').text
-        self.assertIn('About', nav_text)
-		
+		nav_text = self.browser.find_element_by_id('main-navbar').text
+		self.assertIn('About', nav_text)
 		# and decides to read what is on that page 
 		# by clicking on the link. 
 		
 		# she is on a page with about_us in the URL
 		# new_url = self.browser.current_url
-        #self.assertRegex(new_url, '/about_us')
+        #self.assertRegex(new_url, '/about')
+        
+        # she can read about text
+        
+        # she can return to the home page. 
 		
 		#Not really done yet
 		self.fail('Finish the test!')  
