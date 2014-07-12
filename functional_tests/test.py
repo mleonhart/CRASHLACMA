@@ -16,24 +16,33 @@ class NewOutsideVisitorTest(unittest.TestCase):
 		self.browser.get('http://localhost:8000')
 
 		# She notices the page title and header mention CRASH LACMA
-		#but she doesn't really get what is going on.
+		# but she doesn't really get what is going on.
 		self.assertIn('CRASH LACMA', self.browser.title)  
-		
+
 		# She notices sees and About link  
-		#in the main navigation area (check for style? location?)
+		# in the main navigation area (check for style? location?)
 		nav_text = self.browser.find_element_by_id('main-navbar').text
 		self.assertIn('About', nav_text)
-		# and decides to read what is on that page 
-		# by clicking on the link. 
+
+		# and decides to clicking on the link. 
+		self.browser.find_element_by_link_text('About').click()
+
+		# she is on a page with about in the URL
+		new_url = self.browser.current_url
+		self.assertRegex(new_url, '/about')
+
+		# she can read about text that says what this project is 
+		page_text = self.browser.find_element_by_tag_name('body').text
+		self.assertIn('tweet images', page_text)
+		self.assertNotIn('Levi is the Man. But he really is, though. He is the one dude on the project.', page_text)
+
+		# she then returns to the home page. 
+		self.browser.find_element_by_class_name('navbar-brand').click()
+		page_text = self.browser.find_element_by_tag_name('body').text
+		self.assertIn('This is a website.', page_text)
+
 		
-		# she is on a page with about_us in the URL
-		# new_url = self.browser.current_url
-        #self.assertRegex(new_url, '/about')
-        
-        # she can read about text
-        
-        # she can return to the home page. 
-		
+
 		#Not really done yet
 		self.fail('Finish the test!')  
 
