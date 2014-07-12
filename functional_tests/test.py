@@ -41,7 +41,6 @@ class NewOutsideVisitorTest(unittest.TestCase):
 		page_text = self.browser.find_element_by_tag_name('body').text
 		self.assertIn('This is a website.', page_text)
 
-		
 
 		#Not really done yet
 		self.fail('Finish the test!')  

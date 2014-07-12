@@ -1,0 +1,1 @@
+https://docs.djangoproject.com/en/1.7/howto/custom-management-commands/
