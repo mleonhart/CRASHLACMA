@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'main',
     'tweet_handler',
     'map',
+    'browse',
 )
 
 MIDDLEWARE_CLASSES = (
