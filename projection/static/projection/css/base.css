@@ -3,3 +3,24 @@ body {
     color: #444;
     background-color: #000;
 }
+.container {
+      display: table;
+      height: 100%;
+      position: absolute;
+      overflow: hidden;
+      width: 100%;
+}
+
+.helper {
+    #position: absolute; /*a variation of an "lte ie7" hack*/
+    #top: 50%;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.content {
+    #position: relative;
+    #top: -50%;
+    margin:0 auto;
+    width:800px;
+}
