@@ -40,7 +40,9 @@ class NewOutsideVisitorTest(unittest.TestCase):
 		self.check_link('main-navbar', 'Map', '/map')
 		self.check_page_content('This is a map.', 'lorem ipsum dolor sit amet')
 		
-		# and then the Browse page
+		# and then the Browse page 
+		self.check_link('main-navbar', 'Browse', '/browse')
+		self.check_page_content('Browse the tweeted images', 'lorem ipsum dolor sit amet')
 
 		# she then returns to the home page. 
 		self.browser.find_element_by_class_name('navbar-brand').click()
