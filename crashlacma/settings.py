@@ -38,6 +38,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'main',
     'tweet_handler',
+    'map',
 )
 
 MIDDLEWARE_CLASSES = (

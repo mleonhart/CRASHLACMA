@@ -16,14 +16,13 @@ class NewOutsideVisitorTest(unittest.TestCase):
 		self.browser.find_element_by_link_text(link_text).click()
 		new_url = self.browser.current_url
 		self.assertRegex(new_url, expected_url)
-
+		
 	def check_page_content(self, has_text, doesnothave_text):
 		page_text = self.browser.find_element_by_tag_name('body').text
 		self.assertIn(has_text, page_text)
 		self.assertNotIn(doesnothave_text, page_text)
 		
-	
-	def test_can_start_a_list_and_retrieve_it_later(self): 
+	def test_can_navigate_to_all_the_main_nav_pages(self): 
 		# Edith has heard about a cool project happening at LACMA and
 		# decided to find out more about it via its homepage
 		self.browser.get('http://localhost:8000')
@@ -36,18 +35,20 @@ class NewOutsideVisitorTest(unittest.TestCase):
 		# and it takes her to a page with a comprehensible URL and relevant content. 
 		self.check_link('main-navbar', 'About', '/about')
 		self.check_page_content('tweet images', 'lorem ipsum dolor sit amet')
+		
+		# she then decides to view the Map page page. 
+		self.check_link('main-navbar', 'Map', '/map')
+		self.check_page_content('This is a map.', 'lorem ipsum dolor sit amet')
+		
+		# and then the Browse page
 
 		# she then returns to the home page. 
 		self.browser.find_element_by_class_name('navbar-brand').click()
-		page_text = self.browser.find_element_by_tag_name('body').text
-		self.assertIn('This is a website.', page_text)
-		
-		# she then decides to view the Map page page. 
+		self.check_page_content('This is a website.', 'lorem ipsum dolor sit amet')
 
-		# and then the browse page
 
 		# with a better understanding of what is going on she closes her web browser
-		#... and tweets! (how to test that!!!)
+		#... and tweets! (how to test that!!!???)
 
 		#Not really done yet
 		self.fail('Finish the test!')  
