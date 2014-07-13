@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse" id="main-navbar">
       <ul class="nav navbar-nav">
         <li><a href="{% url "about" %}" id="about">About</a></li>
-        <li><a href="/map" id="map">Map</a></li>
+        <li><a href="{% url "map:map_home" %}" id="map">Map</a></li>
         <li><a href="#">Browse</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
