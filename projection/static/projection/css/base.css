@@ -3,6 +3,10 @@ body {
     color: #444;
     background-color: #000;
 }
+
+/*thank you http://stackoverflow.com/questions/12415661/using-marginauto-to-vertically-align-div
+for giving this vertical-align solution*/
+
 .container {
       display: table;
       height: 100%;
@@ -22,5 +26,8 @@ body {
     #position: relative;
     #top: -50%;
     margin:0 auto;
-    width:800px;
+    /* what is our projector resolution? */ 
+    /* once the images are in add min-width? */
+    max-width:800px; 
+   
 }
